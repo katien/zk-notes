@@ -11,7 +11,7 @@ description: "Reed-Solomon Encoding and Fingerprinting for efficient probabilist
 - There are different approaches to obtaining the low degree extension of a message, but each will result in a unique polynomial of degree at most $n-1$. Reed-Solomon and Lagrange interpolation are two approaches to obtaining a unique low degree polynomial with distance amplifying properties which can be used to extend a message.
 ## Random Sampling and Probabilistic Error
 - Proof systems use randomness to improve efficiency at the expense of introducing a small probabilistic error. In the case of message comparison via error correcting codes, the tradeoff is the same. We can evaluate a few entries in the low degree extension encoding of two messages, and if they are the same it is extremely likely that the messages are the same.
-- The probability of the polynomials $P_a$ and $P_b$ for two different messages $a$ and $b$ producing the same output for a random value $r$ is very low, so messages can be probabilistically compared by selecting a random $r$ and checking whether $P_a(r)=P_b(r)$.
+- The probability of the unique low degree extension polynomials $P_a$ and $P_b$ for two different messages $a$ and $b$ producing the same output for a random value $r$ is very low, so messages can be probabilistically compared by selecting a random $r$ and checking whether $P_a(r)=P_b(r)$.
 - The entries are much shorter than the messages, so comparing $P_a(r)$ and $P_b(r)$ is much more efficient than comparing the full messages.
 # Reed-Solomon Algorithm
 To obtain the Reed-Solomon encoding of an $n$-length message $m$, we define a finite field with order $p >>n$. Working over the field, we obtain the low degree extension of $m = (m_1, \dots,m_n) \in \mathbb{F}^n_p$ by using the entries of $(m_1, \dots,m_n)$ as the weights in a linear combination of polynomials in the standard monomial basis $\{x^0,x^1,\dots,x^{n-1}\}$. 
@@ -19,6 +19,9 @@ $$
 P_m(x) = \sum^{n}_{i=1}m_i*x^{i-1}
 $$
 By evaluating $P_m(x)$ at all $x \in \mathbb{F}_p$, we obtain a $p$-dimensional vector which is the low degree extension encoding of $m$.
+$$
+c = (P_m(0), \dots, P_m(p-1))
+$$
 
 - Given a message $m$ of length $n$ where each character $m_i$ has up to $k$ possible symbol values, chose a prime number $p$ such that $p\geq n^2$ and $p\geq k$.
   - Selecting $p \geq n^2$ limits the probability that two different messages will have equal entries at a random index to $1/n$ (as we will see later).
