@@ -151,19 +151,19 @@ Specifying the low degree extension for a message with Lagrange interpolation is
 
 - The full Lagrange interpolating polynomial for $m = (m_0,m_1,m_2,m_3,m_4)$ can be calculated as follows
 $$
-L_0(x) = \prod_{j=1,j\neq 0}^{n-1} \frac{x-x_j}{x_0-x_j} = \frac{(x-x_1)(x-x_2)(x-x_3)(x-x_4)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)(x_0-x_4)} = \frac{(x-1)(x-2)(x-3)(x-4)}{(0-1)(0-2)(0-3)(0-4)} = \frac{(x-1)(x-2)(x-3)(x-4)}{(-1)(-2)(-3)(-4)} = \frac{(x-1)(x-2)(x-3)(x-4)}{-24}
+L_0(x) = \prod_{j=1,j\neq 0}^{n-1} \frac{x-x_j}{x_0-x_j} = \frac{(x-x_1)(x-x_2)(x-x_3)(x-x_4)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)(x_0-x_4)} = \frac{(x-1)(x-2)(x-3)(x-4)}{(0-1)(0-2)(0-3)(0-4)} = \frac{(x-1)(x-2)(x-3)(x-4)}{-24}
 $$
 $$
-L_1(x) = \prod_{j=0,j\neq 1}^{n-1} \frac{x-x_j}{x_1-x_j} = \frac{(x-x_0)(x-x_2)(x-x_3)(x-x_4)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)(x_1-x_4)} = \frac{(x-0)(x-2)(x-3)(x-4)}{(1-0)(1-2)(1-3)(1-4)} = \frac{(x-0)(x-2)(x-3)(x-4)}{(1)(-1)(-2)(-3)} = \frac{(x-0)(x-2)(x-3)(x-4)}{-6}
+L_1(x) = \prod_{j=0,j\neq 1}^{n-1} \frac{x-x_j}{x_1-x_j} = \frac{(x-x_0)(x-x_2)(x-x_3)(x-x_4)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)(x_1-x_4)} = \frac{(x-0)(x-2)(x-3)(x-4)}{(1-0)(1-2)(1-3)(1-4)} = \frac{(x-0)(x-2)(x-3)(x-4)}{-6}
 $$
 $$
-L_2(x) = \prod_{j=0,j\neq 2}^{n-1} \frac{x-x_j}{x_2-x_j} = \frac{(x-x_0)(x-x_1)(x-x_3)(x-x_4)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)(x_2-x_4)} = \frac{(x-0)(x-1)(x-3)(x-4)}{(2-0)(2-1)(2-3)(2-4)} = \frac{(x-0)(x-1)(x-3)(x-4)}{(2)(1)(-1)(-2)} = \frac{(x-0)(x-1)(x-3)(x-4)}{4}
+L_2(x) = \prod_{j=0,j\neq 2}^{n-1} \frac{x-x_j}{x_2-x_j} = \frac{(x-x_0)(x-x_1)(x-x_3)(x-x_4)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)(x_2-x_4)} = \frac{(x-0)(x-1)(x-3)(x-4)}{(2-0)(2-1)(2-3)(2-4)} = \frac{(x-0)(x-1)(x-3)(x-4)}{4}
 $$
 $$
-L_3(x) = \prod_{j=0,j\neq 3}^{n-1} \frac{x-x_j}{x_3-x_j} = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_4)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)(x_3-x_4)} = \frac{(x-0)(x-1)(x-2)(x-4)}{(3-0)(3-1)(3-2)(3-4)} = \frac{(x-0)(x-1)(x-2)(x-4)}{(3)(2)(1)(-1)} = \frac{(x-0)(x-1)(x-2)(x-4)}{-6}
+L_3(x) = \prod_{j=0,j\neq 3}^{n-1} \frac{x-x_j}{x_3-x_j} = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_4)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)(x_3-x_4)} = \frac{(x-0)(x-1)(x-2)(x-4)}{(3-0)(3-1)(3-2)(3-4)} = \frac{(x-0)(x-1)(x-2)(x-4)}{-6}
 $$
 $$
-L_4(x) = \prod_{j=0,j\neq 4}^{n-1} \frac{x-x_j}{x_4-x_j} = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_3)}{(x_4-x_0)(x_4-x_1)(x_4-x_2)(x_4-x_3)} = \frac{(x-0)(x-1)(x-2)(x-3)}{(4-0)(4-1)(4-2)(4-3)} = \frac{(x-0)(x-1)(x-2)(x-3)}{(4)(3)(2)(1)} = \frac{(x-0)(x-1)(x-2)(x-3)}{24}
+L_4(x) = \prod_{j=0,j\neq 4}^{n-1} \frac{x-x_j}{x_4-x_j} = \frac{(x-x_0)(x-x_1)(x-x_2)(x-x_3)}{(x_4-x_0)(x_4-x_1)(x_4-x_2)(x_4-x_3)} = \frac{(x-0)(x-1)(x-2)(x-3)}{(4-0)(4-1)(4-2)(4-3)} = \frac{(x-0)(x-1)(x-2)(x-3)}{24}
 $$$
 $$
 q_a(x) = \sum^{n-1}_{i=0} m_{i+1} \cdot L_i(x) = m_{1}\cdot L_0(x) + m_{2}\cdot L_1(x) + m_{3}\cdot L_2(x) + m_{4}\cdot L_3(x) + m_{5}\cdot L_4(x)
