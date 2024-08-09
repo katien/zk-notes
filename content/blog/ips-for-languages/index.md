@@ -1,6 +1,6 @@
 ---
 title: Interactive Proofs for Languages Versus Functions
-date: "2024-08-08T06:26:45.934Z"
+date: "2024-07-05T06:26:45.934Z"
 description: "Formalization of interactive proofs for languages of decision problems"
 ---
 # Formalization of Interactive Proofs for Languages

@@ -1,6 +1,6 @@
 ---  
 title: Schwartz-Zippel Lemma  
-date: "2024-08-08T06:26:45.934Z"  
+date: "2024-07-06T06:26:45.934Z"  
 description: "The Schwartz-Zippel Lemma for multivariate polynomials and justification of distance amplification in univariate extension polynomials"
 ---  
 # Background

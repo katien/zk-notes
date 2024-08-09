@@ -1,6 +1,6 @@
 ---  
 title: Low Degree and Multilinear Extensions
-date: "2024-08-08T06:26:45.934Z"  
+date: "2024-07-07T06:26:45.934Z"  
 description: "Distance amplifying extensions of multivariate polynomials, comparison of v-dimensional hypercube and univariate domains"
 ---  
 # Univariate vs Multivariate Extensions

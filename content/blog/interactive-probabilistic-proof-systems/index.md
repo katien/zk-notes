@@ -1,6 +1,6 @@
 ---
 title: Interactive Probabilistic Proof Systems and Argument Systems
-date: "2024-08-08T06:26:45.934Z"
+date: "2024-07-04T06:26:45.934Z"
 description: "Interactive probabilistic proof systems (not in zero knowledge) feat. deterministic provers and argument systems"
 ---
 # Interactive Probabilistic Proof Systems

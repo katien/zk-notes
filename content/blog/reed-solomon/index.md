@@ -1,6 +1,6 @@
 ---
 title: Reed-Solomon Encoding and Fingerprinting
-date: "2024-08-08T06:26:45.934Z"
+date: "2024-07-01T06:26:45.934Z"
 description: "Reed-Solomon Encoding and Fingerprinting for efficient probabilistic comparison of data, distance amplification via error correcting codes"
 ---
 # Motivation

@@ -1,6 +1,6 @@
 ---  
 title: Fast Evaluation of Univariate Lagrange Interpolating Polynomials  
-date: "2024-08-08T06:26:45.934Z"  
+date: "2024-07-03T06:26:45.934Z"  
 description: "Optimization that reduces evaluation of a low degree extension at a field element from $O(n^2)$ to $O(n)$ time"
 ---  
 # Naive Evaluation  in $O(n^2)$

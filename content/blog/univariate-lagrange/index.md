@@ -1,6 +1,6 @@
 ---
 title: Univariate Lagrange Interpolation
-date: "2024-08-08T06:26:45.934Z"
+date: "2024-07-02T06:26:45.934Z"
 description: "Univariate Lagrange interpolation as a technique for obtaining a unique low-degree extension polynomial for a dataset"
 ---
 # Background
