@@ -1,26 +1,30 @@
 ---  
-title: Fast Evaluation of Univariate Lagrange Interpolating Polynomials  
-date: "2024-07-03T06:26:45.934Z"  
-description: "Optimization that reduces evaluation of a low degree extension at a field element from $O(n^2)$ to $O(n)$ time"
----  
-# Naive Evaluation  in $O(n^2)$
-- Given a vector $m \in \mathbb{F}_p^n$ with univariate low degree extension $q_m$, evaluating $q_m(r)$ for $r \in \mathbb{F}_p$ naively would require $O(n^2)$ time.
-- The interpolating polynomial $q_m$ has n terms  
-  $$  
-  q_m(r) = \sum^{n-1}_{0}m_{i+1}\cdot L_i(r)  
-  $$  
-  but each Lagrange basis polynomial $L_i(r)$ has another $n-1$ terms  
-  $$  
-  L_i(r) = \prod^{n-1}_{j=0;j\neq i} \frac{x-x_j}{x_i-x_j}  
+title: Fast Evaluation of Multilinear Lagrange Interpolating Polynomials  
+date: "2024-07-13T06:26:45.934Z"  
+description: "Streaming based evaluation of the multilinear extension of a function over the v-dimensional hypercube at any field element"
+---
+- Let $f: \{0,1\}^v \rightarrow \mathbb{F}$ and suppose a verifier has all evaluations $f(x)$ for $x \in \{0,1\}^v$.
+  - The domain of $f$ has size $|\{0,1\}^v| = 2^v$  and we'll call the domain size $n$ for easy time/space analysis
+- Goal: The verifier aims to evaluate the multilinear extension of $f$, $\tilde{f}(x)$ for any $x \in \mathbb{F}_p$
+- Given $f(w)$ for all $w \in \{0,1\}^v$ and a $v$-dimensional vector $r \in \mathbb{F}^v$, the verifier must efficiently evaluate $\tilde{f}(r)$
+# Streaming Interactive Proofs
+- See the paper [Verifying Computations with Streaming Interactive Proofs](https://arxiv.org/pdf/1109.6882)
+  - $O(n\cdot log(n))$ runtime
+  - $O(log(n))$ space - $v$ + 1 field elements are stored
+- The verifier can compute $\tilde{f}(r)$ in $O(n\cdot log(n))$ time and $O(log(n))$ space by streaming the inputs $f(w)$ for all $w \in \{0,1\}^v$.
+  - The order of the inputs does not matter.
+- $V$ can calculate the sum
   $$
-- To compute $q_m(r)$ according to these definitions, we would have $O(n\cdot(n-1)) \approx O(n^2)$ operations to perform
-# Linear Time Shortcut
-- We can eliminate most of the work associated with computing each Lagrange basis polynomial by computing the basis polynomials recursively
-- We rely on the fact that since the nodes over which our Lagrange basis is defined are the same as their indices ($x_i = i$), the $i$th Lagrange basis polynomial can be expressed as a function of the $i-1$th basis polynomial which can be computed in constant time.
-- We begin by computing the first basis polynomial $L_0$ according to its definition which still takes $O(n)$ time
-- Then for any $i>0$, for an interpolating set where all nodes $x_i = i \in \{0,\dots,n-1\}$, we can compute in constant time
-
-$$  
-L_i(r) = \frac{L_{i-1}(r) \cdot (r-(i-1))\cdot(-(n-i))}{(r-i)\cdot i}  
-$$
-- Since the Lagrange basis polynomials are a constant time calculation with this algorithm, the full evaluation of $q_m(r)$ is a sum of $n$ constant time terms, so the runtime is reduces from $O(n^2)$ to O(n).
+  \tilde{f}(r) = \sum_{w\in \{0,1\}^v} f(w)\cdot L_w(x_1,\dots,x_v)
+  $$
+  with a recursive algorithm.
+- Begin by initializing the accumulator to 0: $\tilde{f}(r) \leftarrow 0$. Then with each entry, add the next term to the accumulator
+  $$
+  \tilde{f}(r) \leftarrow \tilde{f}(r) + f(w) \cdot L_w(r)
+  $$
+- With this approach, the verifier only needs to store the value $r$ and the current value of $\tilde{f}(r)$ as it iterates through values of $w \in \{0,1\}^v$. $r$ is a $v$-dimensional vector of elements of $\mathbb{F}$ and $\tilde{f}(r) \in \mathbb{F}$, so the algorithm's space usage is $v+1$ field elements or $O(v ) = O(log_2(n))$
+- The verifier runs through each of the $2^v = n$ values in $w \in \{0,1\}^v$, each time evaluating the $v$-term Lagrange basis polynomial $L_w(r)$
+  $$
+  L_w(r_1,\dots,r_v) := \prod^{v}_{i=1} r_i\cdot x_i + (1-r_i)(i-x_i)
+  $$
+  so $2^v$ operations in $O(v)$ are run to compute the full sum, resulting in a runtime of $O(v \cdot 2^v)$ or $O(n \cdot log(n))$
